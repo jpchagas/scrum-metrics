@@ -1,9 +1,18 @@
 language: python
+dist: trusty
 python:
 - "3.7"
 
+addons:
+  sonarcloud:
+    organization: "jpchagas-github"
+    token: $SONAR_TOKEN # encrypted value of your token
 #install:
 
-script: pytest
+script: 
+- pytest
+- sonar-scanner
 
 #after_success:
+
+e8cf4e32d12afcc7cad088fa4079f54cf07042e6
