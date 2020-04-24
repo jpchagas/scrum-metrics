@@ -1,6 +1,33 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from trello import trello
 
+t = trello()
+
+cards = t.getCards()
+cards_detail = list()
+for key in cards:
+    cards_detail.append(t.getCardID(key)) 
+
+lanes = t.getLists()
+countbylane = {}
+for laneidex in range(len(lanes)):
+    lane = lanes[laneidex]
+    for card in cards_detail:
+        if lane['laneid']==card['listid']:
+            if lane['lanename'] in countbylane:
+                countbylane.update({lane['lanename']:countbylane.get(lane['lanename'])+1})
+            else:
+                countbylane.update({lane['lanename']:1})
+
+print(countbylane)
+
+
+
+
+'''
+GERAÇÃO DO GRÁFICO
+'''
 weeks = np.arange(1,13,1)
 #Weeks -> W1,W2,W3,W4,W5,W6,W7,W8,W9,W10,W11, W12
 features_req = [1, 1, 4, 3, 1, 1, 0, 0, 0, 0, 0, 0]
@@ -21,4 +48,4 @@ ax.set_xlabel('Weeks')
 ax.set_xlim(1, 12)
 ax.set_ylim(0, 6)
 
-plt.show()
+#plt.show()
