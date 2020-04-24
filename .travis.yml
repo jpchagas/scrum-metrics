@@ -14,5 +14,3 @@ script:
 - sonar-scanner
 
 #after_success:
-
-e8cf4e32d12afcc7cad088fa4079f54cf07042e6
