@@ -4,6 +4,6 @@ python:
 
 #install:
 
-#script:
+script: pytest
 
 #after_success:
