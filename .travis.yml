@@ -13,4 +13,7 @@ script:
 - pytest
 - sonar-scanner
 
-#after_success:
+deploy:
+  provider: heroku
+  api_key: $HEROKU_TOKEN
+  app: fathomless-escarpment-83086
